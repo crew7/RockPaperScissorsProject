@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function computerPlay(randomChoice) {
+            computerChoice = Math.floor(Math.random()*3) + 1
+            switch (computerChoice) {
+                case 1:
+                    computerChoice = 'Rock';
+                    break;
+                case 2:
+                    computerChoice = 'Paper';
+                    break;
+                case 3:
+                    computerChoice = 'Scissors';
+            }
+            return computerChoice
+        }
+        console.log(computerPlay());
+    </script>
+</body>
+</html>
