@@ -8,8 +8,8 @@
 </head>
 <body>
     <script>
-        function computerPlay(randomChoice) {
-            computerChoice = Math.floor(Math.random()*3) + 1
+        function computerPlay() {
+            let computerChoice = Math.floor(Math.random()*3) + 1;
             switch (computerChoice) {
                 case 1:
                     computerChoice = 'Rock';
@@ -22,7 +22,34 @@
             }
             return computerChoice
         }
-        console.log(computerPlay());
+
+        function playRockPaperScissors(playerSelection, computerSelection) {
+            playerSelection = playerSelection.toLowerCase()
+
+            if (playerSelection === 'rock' && computerSelection === 'Paper') {
+                return 'You Lose! Paper beats Rock'
+            } else if (playerSelection === 'paper' && computerSelection === 'Scissors') {
+                return 'You Lose! Scissors beats Paper'
+            } else if (playerSelection === 'scissors' && computerSelection === 'Rock') {
+                return 'You Lose! Rock beats Scissors'
+            }
+
+            if (playerSelection === 'rock' && computerSelection === 'Scissors') {
+                return 'You Win! Rock beats Scissors'
+            } else if (playerSelection === 'paper' && computerSelection === 'Rock') {
+                return 'You Win! Paper beats Rock'
+            } else if (playerSelection === 'scissors' && computerSelection === 'Paper') {
+                return 'You Win! Scissors beats Paper'
+            } 
+            
+            else {
+                return 'IT\'S A TIE!'
+            }
+
+        }
+
+        console.log(playRockPaperScissors('scisSoRs', computerPlay()));
+
     </script>
 </body>
 </html>
