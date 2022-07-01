@@ -42,13 +42,32 @@
                 return 'You Win! Scissors beats Paper'
             } 
             
+            if (playerSelection === 'rock' && computerSelection === 'Rock') {
+                return 'You tied! Rock ties with Rock'
+            } else if (playerSelection === 'paper' && computerSelection === 'Paper') {
+                return 'You tied! Paper ties with Paper'
+            } else if (playerSelection === 'scissors' && computerSelection === 'Scissors') {
+                return 'You tied! Scissors ties with Scissors'
+            }
+
+
             else {
-                return 'IT\'S A TIE!'
+                return 'You didn\'t type either rock, paper or scissors.'
             }
 
         }
 
-        console.log(playRockPaperScissors('scisSoRs', computerPlay()));
+        
+        function game() {
+            for (let i = 0; i < 5; i++) {
+                const computerSelection = computerPlay();
+                const playerSelection = prompt('Type either rock, paper or scissors. This game lasts 5 rounds.');
+                console.log(playRockPaperScissors(playerSelection, computerSelection));
+            }
+        }
+
+        game();
+
 
     </script>
 </body>
