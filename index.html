@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <style>
-        button {
 
-        }
     </style>
 </head>
 <body>
@@ -128,17 +126,26 @@
         let winCounter = 0;
         let loseCounter = 0;
         let tieCounter = 0;
+        let clearCounter = 0;
 
-        
+        function scoreConverter(roundData) {
 
-        function scoreCompiler(roundData) {
-            if (roundData === 'win') {
-                ++winCounter
-            } else if (roundData === 'lose') {
-                ++loseCounter
-            } else if (roundData === 'tie') {
-                ++tieCounter
+            if (winCounter + loseCounter + tieCounter > 5) {
+                winCounter = 0;
+                loseCounter = 0;
+                tieCounter = 0;
+                touchGameResults.textContent = '';
+                return;
             }
+
+            if (winCounter + loseCounter + tieCounter < 5)
+                if (roundData === 'win') {
+                    ++winCounter;
+                } else if (roundData === 'lose') {
+                    ++loseCounter;
+                } else if (roundData === 'tie') {
+                    ++tieCounter;
+                }
 
             if (winCounter + loseCounter + tieCounter === 5) {
                 if (winCounter > loseCounter) {
@@ -148,31 +155,29 @@
                 } else {
                     console.log('you tied the game')
                 }
-                
+                ++tieCounter; /* The point of this is to loop back to a new game */
             }
-            console.log(loseCounter);
-            
         }
 
         touchRockButton.addEventListener('click', () => {
         const computerSelection = computerPlay();
         const winner = playRound('rock', computerSelection);
 
-        scoreCompiler(winner);
+        scoreConverter(winner);
         })
 
         touchPaperButton.addEventListener('click', () => {
         const computerSelection = computerPlay();
         const winner = playRound('paper', computerSelection);
 
-        scoreCompiler(winner);
+        scoreConverter(winner);
         })
 
         touchScissorsButton.addEventListener('click', () => {
         const computerSelection = computerPlay();
         const winner = playRound('scissors', computerSelection);  
 
-        scoreCompiler(winner);
+        scoreConverter(winner);
         })
 
     </script>
