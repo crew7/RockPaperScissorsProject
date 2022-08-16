@@ -1,0 +1,73 @@
+body {
+    background-color: #acd9f9;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto';
+    align-items: center;
+}
+main{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+}
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1{
+    font-size: 70px;
+    color: rgb(7, 49, 120);
+    padding-bottom: 5px;
+    margin-bottom: 0px;
+}
+h2{
+    margin-top: 0px;
+    color: rgb(7, 49, 120);
+    margin-bottom: 0px;
+    padding-bottom: 5px;
+}
+h3{
+    margin-top: 0px;
+    color: rgb(7, 49, 120);
+}
+.buttonContainers{
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+button{
+    background-color: rgb(162, 184, 234);
+    width: 200px;
+    height: 200px;
+    font-size: 40px;
+    border: 5px solid rgb(78, 90, 255);
+    color: rgb(43, 92, 115);
+}
+.gameResultsContainer{
+    width: 350px;
+    border: 5px solid rgb(17, 69, 152);
+    height: 273px;
+    padding: 3px;
+    background-color: rgb(208, 216, 236);
+}
+.gameResultsHeader{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.gameResultsHeader h2{
+    
+}
+#gameResults p {
+    font-size: 20px;
+    border: 5px solid rgba(14, 19, 53, 0.71);
+    margin: 5px;
+    padding: 4px;
+}
+.buttonClickNotif{
+    border: 5px solid red;
+}
