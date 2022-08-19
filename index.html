@@ -22,14 +22,51 @@
             <button id="scissorsButton">Scissors</button>
         </div>
 
-        <div class="gameResultsContainer">
-            <div class="gameResultsHeader">
-                <h2>Games Results</h2>
-                <div id="gameResults"></div>
-            </div>
-        </div>
+        <div class="scoreboardArea">  
 
-        <div id="scoreCounter"></div>
+            <div class="gameResultsContainer">
+
+                <div class="gameResultsHeader">
+
+                    <h2>Game Results</h2>
+                    <div id="gameResults">
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="gameResultsMessageContainer">
+                <h2>Game Conclusion</h2>
+                <p id="gameResultsMessage">
+                    
+                </p>
+            </div>
+
+            <div id="scoreCounter">
+                <h2>Current Score Counter</h2>
+                <div id="playerWinsContainer">
+                    <p>Current Player Wins:</p> &nbsp;
+                    <p id="playerWins">
+                        0
+                    </p>
+                </div>
+                <div id="computerWinsContainer">
+                    <p>Current Computer Wins:</p> &nbsp;
+                    <p id="computerWins">
+                        0
+                    </p>
+                </div>
+                <div id="gameTiesContainer">
+                    <p>Current Ties:</p> &nbsp;
+                    <p id="gameTies">
+                        0
+                    </p>
+                </div>
+
+            </div>
+
+        </div> 
     </main>
 
 
@@ -135,25 +172,33 @@
                 loseCounter = 0;
                 tieCounter = 0;
                 touchGameResults.textContent = '';
+                touchGameResultsMessage.textContent = '';
+
+                touchPlayerWins.textContent = '0';
+                touchComputerWins.textContent = '0';
+                touchGameTies.textContent = '0';
                 return;
             }
 
             if (winCounter + loseCounter + tieCounter < 5)
                 if (roundData === 'win') {
                     ++winCounter;
+                    touchPlayerWins.textContent = winCounter;
                 } else if (roundData === 'lose') {
                     ++loseCounter;
+                    touchComputerWins.textContent = loseCounter;
                 } else if (roundData === 'tie') {
                     ++tieCounter;
+                    touchGameTies.textContent = tieCounter;
                 }
 
             if (winCounter + loseCounter + tieCounter === 5) {
                 if (winCounter > loseCounter) {
-                    console.log('you won the game')
+                    touchGameResultsMessage.textContent = 'YOU WON THE BEST OF 5!'
                 } else if (loseCounter > winCounter) {
-                    console.log('you lost the game')
+                    touchGameResultsMessage.textContent = 'YOU LOST THE BEST OF 5!'
                 } else {
-                    console.log('you tied the game')
+                    touchGameResultsMessage.textContent = 'YOU TIED THE BEST OF 5!'
                 }
                 ++tieCounter; /* The point of this is to loop back to a new game */
             }
@@ -166,13 +211,22 @@
         const touchRockButton = document.querySelector('#rockButton');
         const touchPaperButton = document.querySelector('#paperButton');
         const touchScissorsButton = document.querySelector('#scissorsButton');
+
         const touchGameResults = document.querySelector('#gameResults');
-        const arrayOfButtons = document.querySelectorAll('button')
+        const touchGameResultsMessage = document.querySelector('#gameResultsMessage');
+
+        const touchPlayerWins = document.querySelector('#playerWins');
+        const touchComputerWins = document.querySelector('#computerWins');
+        const touchGameTies = document.querySelector('#gameTies');
+
+
+        const arrayOfButtons = document.querySelectorAll('button');
+        
 
         arrayOfButtons.forEach( (gameButton) => {
             gameButton.addEventListener('click', (buttonClick) => {
                 buttonClick.target.classList.add('buttonClickNotif');
-                setTimeout( () => buttonClick.target.classList.remove('buttonClickNotif'), 100 )
+                setTimeout( () => buttonClick.target.classList.remove('buttonClickNotif'), 100 ) /* This makes click noticeable */
             })
         })
 

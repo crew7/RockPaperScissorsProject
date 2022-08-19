@@ -47,6 +47,10 @@ button{
     border: 5px solid rgb(78, 90, 255);
     color: rgb(43, 92, 115);
 }
+.scoreboardArea{
+    display: flex;
+    gap: 5px;
+}
 .gameResultsContainer{
     width: 350px;
     border: 5px solid rgb(17, 69, 152);
@@ -59,9 +63,7 @@ button{
     flex-direction: column;
     align-items: center;
 }
-.gameResultsHeader h2{
-    
-}
+
 #gameResults p {
     font-size: 20px;
     border: 5px solid rgba(14, 19, 53, 0.71);
@@ -70,4 +72,35 @@ button{
 }
 .buttonClickNotif{
     border: 5px solid red;
+}
+#gameResultsMessageContainer{
+    width: 350px;
+    border: 5px solid rgb(17, 69, 152);
+    height: 273px;
+    padding: 3px;
+    background-color: rgb(208, 216, 236);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#gameResultsMessage{
+    font-size: 60px;
+    text-align: center;
+    font-weight: bolder;
+    color: rgb(0, 0, 8);
+    margin: 0px;
+    padding: 0px;
+}
+#scoreCounter{
+    width: 350px;
+    border: 5px solid rgb(17, 69, 152);
+    height: 273px;
+    padding: 3px;
+    background-color: rgb(208, 216, 236);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#scoreCounter div{
+    display: flex;
 }
