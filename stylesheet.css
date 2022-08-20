@@ -37,6 +37,7 @@ h3{
 .buttonContainers{
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 25px;
 }
 button{
@@ -63,6 +64,7 @@ button{
     height: 273px;
     padding: 3px;
     background-color: rgb(208, 216, 236);
+    overflow: auto;
 }
 .gameResultsHeader{
     display: flex;

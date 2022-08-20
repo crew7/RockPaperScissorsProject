@@ -20,7 +20,7 @@ function playRound(playerSelection, computerSelection) {
         gameResultsMessage = document.createElement('p');
         gameResultsMessage.textContent = 'You Lose! Paper beats Rock'
         gameResultsMessage.classList.add('loserIsRed');
-        touchGameResults.appendChild(gameResultsMessage);
+        touchGameResults.prepend(gameResultsMessage);
 
         return 'lose';
 
@@ -28,7 +28,7 @@ function playRound(playerSelection, computerSelection) {
         gameResultsMessage = document.createElement('p');
         gameResultsMessage.textContent = 'You Lose! Scissors beats Paper'
         gameResultsMessage.classList.add('loserIsRed');
-        touchGameResults.appendChild(gameResultsMessage);
+        touchGameResults.prepend(gameResultsMessage);
 
         return 'lose';
 
@@ -36,7 +36,7 @@ function playRound(playerSelection, computerSelection) {
         gameResultsMessage = document.createElement('p');
         gameResultsMessage.textContent = 'You Lose! Rock beats Scissors'
         gameResultsMessage.classList.add('loserIsRed');
-        touchGameResults.appendChild(gameResultsMessage);
+        touchGameResults.prepend(gameResultsMessage);
 
         return 'lose';
     }
@@ -45,7 +45,7 @@ function playRound(playerSelection, computerSelection) {
         gameResultsMessage = document.createElement('p');
         gameResultsMessage.textContent = 'You Win! Rock beats Scissors'
         gameResultsMessage.classList.add('winnerIsGreen');
-        touchGameResults.appendChild(gameResultsMessage);
+        touchGameResults.prepend(gameResultsMessage);
 
         return 'win';
 
@@ -53,7 +53,7 @@ function playRound(playerSelection, computerSelection) {
         gameResultsMessage = document.createElement('p');
         gameResultsMessage.textContent = 'You Win! Paper beats Rock'
         gameResultsMessage.classList.add('winnerIsGreen');
-        touchGameResults.appendChild(gameResultsMessage);
+        touchGameResults.prepend(gameResultsMessage);
 
         return 'win';
 
@@ -71,7 +71,7 @@ function playRound(playerSelection, computerSelection) {
         gameResultsMessage = document.createElement('p');
         gameResultsMessage.textContent = 'You tied! Rock ties with Rock'
         gameResultsMessage.classList.add('tieIsGray');
-        touchGameResults.appendChild(gameResultsMessage);
+        touchGameResults.prepend(gameResultsMessage);
 
         return 'tie';
 
@@ -79,7 +79,7 @@ function playRound(playerSelection, computerSelection) {
         gameResultsMessage = document.createElement('p');
         gameResultsMessage.textContent = 'You tied! Paper ties with Paper'
         gameResultsMessage.classList.add('tieIsGray');
-        touchGameResults.appendChild(gameResultsMessage);
+        touchGameResults.prepend(gameResultsMessage);
 
         return 'tie';
 
@@ -87,7 +87,7 @@ function playRound(playerSelection, computerSelection) {
         gameResultsMessage = document.createElement('p');
         gameResultsMessage.textContent = 'You tied! Scissors ties with Scissors'
         gameResultsMessage.classList.add('tieIsGray');
-        touchGameResults.appendChild(gameResultsMessage);
+        touchGameResults.prepend(gameResultsMessage);
 
         return 'tie';
     }
@@ -99,7 +99,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function scoreConverter(roundData) {
-    if (winCounter + loseCounter + tieCounter > 5) {
+    if (winCounter === 6 || loseCounter === 6) {
         winCounter = 0;
         loseCounter = 0;
         tieCounter = 0;
@@ -114,19 +114,18 @@ function scoreConverter(roundData) {
         return;
     }
 
-    if (winCounter + loseCounter + tieCounter < 5)
-        if (roundData === 'win') {
-            ++winCounter;
-            touchPlayerWins.textContent = winCounter;
-        } else if (roundData === 'lose') {
-            ++loseCounter;
-            touchComputerWins.textContent = loseCounter;
-        } else if (roundData === 'tie') {
-            ++tieCounter;
-            touchGameTies.textContent = tieCounter;
-        }
+    if (roundData === 'win') {
+        ++winCounter;
+        touchPlayerWins.textContent = winCounter;
+    } else if (roundData === 'lose') {
+        ++loseCounter;
+        touchComputerWins.textContent = loseCounter;
+    } else if (roundData === 'tie') {
+        ++tieCounter;
+        touchGameTies.textContent = tieCounter;
+    }
 
-    if (winCounter + loseCounter + tieCounter === 5) {
+    if (winCounter === 5 || loseCounter === 5) {
         if (winCounter > loseCounter) {
             touchGameResultsMessage.textContent = 'YOU WON THE BEST OF 5!'
             touchGameResultsMessage.classList.add('winnerIsGreen')
@@ -137,6 +136,8 @@ function scoreConverter(roundData) {
             touchGameResultsMessage.textContent = 'YOU TIED THE BEST OF 5!'
             touchGameResultsMessage.classList.add('tieIsGray')
         }
+        ++loseCounter
+        ++winCounter
         ++tieCounter; /* The point of this is to loop back to a new game */
     }
 }
