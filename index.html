@@ -43,25 +43,27 @@
                 </p>
             </div>
 
-            <div id="scoreCounter">
+            <div id="scoreCounterContainer">
                 <h2>Current Score Counter</h2>
-                <div id="playerWinsContainer">
-                    <p>Current Player Wins:</p> &nbsp;
-                    <p id="playerWins">
-                        0
-                    </p>
-                </div>
-                <div id="computerWinsContainer">
-                    <p>Current Computer Wins:</p> &nbsp;
-                    <p id="computerWins">
-                        0
-                    </p>
-                </div>
-                <div id="gameTiesContainer">
-                    <p>Current Ties:</p> &nbsp;
-                    <p id="gameTies">
-                        0
-                    </p>
+                <div class="scoreCounterMessageContainer">
+                    <div id="playerWinsContainer">
+                        <p>Current Player Wins:</p> &nbsp;
+                        <p id="playerWins">
+                            0
+                        </p>
+                    </div>
+                    <div id="computerWinsContainer">
+                        <p>Current Computer Wins:</p> &nbsp;
+                        <p id="computerWins">
+                            0
+                        </p>
+                    </div>
+                    <div id="gameTiesContainer">
+                        <p>Current Ties:</p> &nbsp;
+                        <p id="gameTies">
+                            0
+                        </p>
+                    </div>
                 </div>
 
             </div>
@@ -69,190 +71,6 @@
         </div> 
     </main>
 
-
-
-
-
-    <script>
-
-        function computerPlay() {
-            let computerChoice = Math.floor(Math.random()*3) + 1;
-            switch (computerChoice) {
-                case 1:
-                    computerChoice = 'Rock';
-                    break;
-                case 2:
-                    computerChoice = 'Paper';
-                    break;
-                case 3:
-                    computerChoice = 'Scissors';
-            }
-            return computerChoice
-        }
-
-        function playRound(playerSelection, computerSelection) {
-            playerSelection = playerSelection.toLowerCase()
-
-            if (playerSelection === 'rock' && computerSelection === 'Paper') {
-                gameResultsMessage = document.createElement('p');
-                gameResultsMessage.textContent = 'You Lose! Paper beats Rock'
-                touchGameResults.appendChild(gameResultsMessage);
-
-                return 'lose';
-
-            } else if (playerSelection === 'paper' && computerSelection === 'Scissors') {
-                gameResultsMessage = document.createElement('p');
-                gameResultsMessage.textContent = 'You Lose! Scissors beats Paper'
-                touchGameResults.appendChild(gameResultsMessage);
-
-                return 'lose';
-
-            } else if (playerSelection === 'scissors' && computerSelection === 'Rock') {
-                gameResultsMessage = document.createElement('p');
-                gameResultsMessage.textContent = 'You Lose! Rock beats Scissors'
-                touchGameResults.appendChild(gameResultsMessage);
-
-                return 'lose';
-            }
-
-            if (playerSelection === 'rock' && computerSelection === 'Scissors') {
-                gameResultsMessage = document.createElement('p');
-                gameResultsMessage.textContent = 'You Win! Rock beats Scissors'
-                touchGameResults.appendChild(gameResultsMessage);
-
-                return 'win';
-
-            } else if (playerSelection === 'paper' && computerSelection === 'Rock') {
-                gameResultsMessage = document.createElement('p');
-                gameResultsMessage.textContent = 'You Win! Paper beats Rock'
-                touchGameResults.appendChild(gameResultsMessage);
-
-                return 'win';
-
-            } else if (playerSelection === 'scissors' && computerSelection === 'Paper') {
-                gameResultsMessage = document.createElement('p');
-                gameResultsMessage.textContent = 'You Win! Scissors beats Paper'
-                touchGameResults.appendChild(gameResultsMessage);
-
-                return 'win';
-            } 
-            
-            if (playerSelection === 'rock' && computerSelection === 'Rock') {
-                
-                gameResultsMessage = document.createElement('p');
-                gameResultsMessage.textContent = 'You tied! Rock ties with Rock'
-                touchGameResults.appendChild(gameResultsMessage);
-
-                return 'tie';
-
-            } else if (playerSelection === 'paper' && computerSelection === 'Paper') {
-                gameResultsMessage = document.createElement('p');
-                gameResultsMessage.textContent = 'You tied! Paper ties with Paper'
-                touchGameResults.appendChild(gameResultsMessage);
-
-                return 'tie';
-
-            } else if (playerSelection === 'scissors' && computerSelection === 'Scissors') {
-                gameResultsMessage = document.createElement('p');
-                gameResultsMessage.textContent = 'You tied! Scissors ties with Scissors'
-                touchGameResults.appendChild(gameResultsMessage);
-
-                return 'tie';
-            }
-
-
-            else {
-                return 'You didn\'t click either rock, paper or scissors.'
-            }
-        }
-
-        function scoreConverter(roundData) {
-            if (winCounter + loseCounter + tieCounter > 5) {
-                winCounter = 0;
-                loseCounter = 0;
-                tieCounter = 0;
-                touchGameResults.textContent = '';
-                touchGameResultsMessage.textContent = '';
-
-                touchPlayerWins.textContent = '0';
-                touchComputerWins.textContent = '0';
-                touchGameTies.textContent = '0';
-                return;
-            }
-
-            if (winCounter + loseCounter + tieCounter < 5)
-                if (roundData === 'win') {
-                    ++winCounter;
-                    touchPlayerWins.textContent = winCounter;
-                } else if (roundData === 'lose') {
-                    ++loseCounter;
-                    touchComputerWins.textContent = loseCounter;
-                } else if (roundData === 'tie') {
-                    ++tieCounter;
-                    touchGameTies.textContent = tieCounter;
-                }
-
-            if (winCounter + loseCounter + tieCounter === 5) {
-                if (winCounter > loseCounter) {
-                    touchGameResultsMessage.textContent = 'YOU WON THE BEST OF 5!'
-                } else if (loseCounter > winCounter) {
-                    touchGameResultsMessage.textContent = 'YOU LOST THE BEST OF 5!'
-                } else {
-                    touchGameResultsMessage.textContent = 'YOU TIED THE BEST OF 5!'
-                }
-                ++tieCounter; /* The point of this is to loop back to a new game */
-            }
-        }
-        let winCounter = 0;
-        let loseCounter = 0;
-        let tieCounter = 0;
-        let clearCounter = 0;
-        
-        const touchRockButton = document.querySelector('#rockButton');
-        const touchPaperButton = document.querySelector('#paperButton');
-        const touchScissorsButton = document.querySelector('#scissorsButton');
-
-        const touchGameResults = document.querySelector('#gameResults');
-        const touchGameResultsMessage = document.querySelector('#gameResultsMessage');
-
-        const touchPlayerWins = document.querySelector('#playerWins');
-        const touchComputerWins = document.querySelector('#computerWins');
-        const touchGameTies = document.querySelector('#gameTies');
-
-
-        const arrayOfButtons = document.querySelectorAll('button');
-        
-
-        arrayOfButtons.forEach( (gameButton) => {
-            gameButton.addEventListener('click', (buttonClick) => {
-                buttonClick.target.classList.add('buttonClickNotif');
-                setTimeout( () => buttonClick.target.classList.remove('buttonClickNotif'), 100 ) /* This makes click noticeable */
-            })
-        })
-
-        touchRockButton.addEventListener('click', () => {
-        const computerSelection = computerPlay();
-        const winner = playRound('rock', computerSelection);
-
-        scoreConverter(winner);
-        })
-
-        touchPaperButton.addEventListener('click', () => {
-        const computerSelection = computerPlay();
-        const winner = playRound('paper', computerSelection);
-
-        scoreConverter(winner);
-        })
-
-        touchScissorsButton.addEventListener('click', () => {
-        const computerSelection = computerPlay();
-        const winner = playRound('scissors', computerSelection);  
-
-        scoreConverter(winner);
-        })
-
-        
-
-    </script>
+    <script src="rpsScript.js"></script>
 </body>
 </html>

@@ -51,6 +51,12 @@ button{
     display: flex;
     gap: 5px;
 }
+.scoreboardArea h2{
+    font-weight: bolder;
+    padding: 0px 5px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 2px;
+}
 .gameResultsContainer{
     width: 350px;
     border: 5px solid rgb(17, 69, 152);
@@ -65,8 +71,8 @@ button{
 }
 
 #gameResults p {
-    font-size: 20px;
-    border: 5px solid rgba(14, 19, 53, 0.71);
+    font-size: 18px;
+    border: 5px solid black;
     margin: 5px;
     padding: 4px;
 }
@@ -87,11 +93,10 @@ button{
     font-size: 60px;
     text-align: center;
     font-weight: bolder;
-    color: rgb(0, 0, 8);
-    margin: 0px;
+    margin: auto auto;
     padding: 0px;
 }
-#scoreCounter{
+#scoreCounterContainer{
     width: 350px;
     border: 5px solid rgb(17, 69, 152);
     height: 273px;
@@ -100,7 +105,53 @@ button{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
 }
-#scoreCounter div{
+.scoreCounterMessageContainer{
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.scoreCounterMessageContainer div{
     display: flex;
+    width: 255px;
+    border: 5px solid black;
+    justify-content: flex-end;
+    padding-right: 85px;
+}
+.scoreCounterMessageContainer div p{
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 10px 0px;
+}
+#playerWinsContainer{
+    background-color: green;
+    color: white;
+}
+#computerWinsContainer{
+    background-color: red;
+    color: white;
+}
+#gameTiesContainer{
+    background-color: grey;
+    color: white;
+}
+.winnerIsGreen{
+    background-color: green;
+    color: white;
+    border: 5px solid black;
+}
+.loserIsRed{
+    background-color: red;
+    color: white;
+    border: 5px solid black;
+}
+.tieIsGray{
+    background-color: gray;
+    color: white;
+    border: 5px solid black;
 }
