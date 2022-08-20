@@ -48,6 +48,11 @@ button{
     border: 5px solid rgb(78, 90, 255);
     color: rgb(43, 92, 115);
 }
+button img{
+    max-width: 70%;
+    max-height: 70%;
+    pointer-events:none;
+}
 .scoreboardArea{
     display: flex;
     gap: 5px;

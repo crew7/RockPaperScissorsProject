@@ -132,13 +132,9 @@ function scoreConverter(roundData) {
         } else if (loseCounter > winCounter) {
             touchGameResultsMessage.textContent = 'YOU LOST THE BEST OF 5!'
             touchGameResultsMessage.classList.add('loserIsRed')
-        } else {
-            touchGameResultsMessage.textContent = 'YOU TIED THE BEST OF 5!'
-            touchGameResultsMessage.classList.add('tieIsGray')
         }
         ++loseCounter
-        ++winCounter
-        ++tieCounter; /* The point of this is to loop back to a new game */
+        ++winCounter /* The point of this is to loop back to a new game */
     }
 }
 let winCounter = 0;
@@ -163,6 +159,7 @@ const arrayOfButtons = document.querySelectorAll('button');
 
 arrayOfButtons.forEach( (gameButton) => {
     gameButton.addEventListener('click', (buttonClick) => {
+        console.log(buttonClick);
         buttonClick.target.classList.add('buttonClickNotif');
         setTimeout( () => buttonClick.target.classList.remove('buttonClickNotif'), 100 ) /* This makes click noticeable */
     })
