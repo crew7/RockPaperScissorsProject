@@ -61,7 +61,7 @@ function playRound(playerSelection, computerSelection) {
         gameResultsMessage = document.createElement('p');
         gameResultsMessage.textContent = 'You Win! Scissors beats Paper'
         gameResultsMessage.classList.add('winnerIsGreen');
-        touchGameResults.appendChild(gameResultsMessage);
+        touchGameResults.prepend(gameResultsMessage);
 
         return 'win';
     } 
