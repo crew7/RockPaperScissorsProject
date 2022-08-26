@@ -127,10 +127,22 @@ function scoreConverter(roundData) {
 
     if (winCounter === 5 || loseCounter === 5) {
         if (winCounter > loseCounter) {
-            touchGameResultsMessage.textContent = 'YOU WON THE BEST OF 5!'
+            touchGameResultsMessage.textContent = 'YOU WIN!'
+
+            const smileyImg = document.createElement('img');
+            smileyImg.src = "./smiley.png"
+            touchGameResultsMessage.appendChild(smileyImg);
+
             touchGameResultsMessage.classList.add('winnerIsGreen')
+
+
         } else if (loseCounter > winCounter) {
-            touchGameResultsMessage.textContent = 'YOU LOST THE BEST OF 5!'
+            touchGameResultsMessage.textContent = 'YOU LOST!'
+
+            const sadFaceImg = document.createElement('img');
+            sadFaceImg.src = "./sadface.png"
+            touchGameResultsMessage.appendChild(sadFaceImg);
+
             touchGameResultsMessage.classList.add('loserIsRed')
         }
         ++loseCounter
@@ -159,7 +171,6 @@ const arrayOfButtons = document.querySelectorAll('button');
 
 arrayOfButtons.forEach( (gameButton) => {
     gameButton.addEventListener('click', (buttonClick) => {
-        console.log(buttonClick);
         buttonClick.target.classList.add('buttonClickNotif');
         setTimeout( () => buttonClick.target.classList.remove('buttonClickNotif'), 100 ) /* This makes click noticeable */
     })

@@ -1,17 +1,7 @@
 body {
     background-color: #acd9f9;
-    display: flex;
-    flex-direction: column;
     font-family: 'Roboto';
     align-items: center;
-}
-main{
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    align-items: center;
-    justify-content: center;
 }
 header{
     display: flex;
@@ -23,6 +13,7 @@ h1{
     color: rgb(7, 49, 120);
     padding-bottom: 5px;
     margin-bottom: 0px;
+    text-align: center;
 }
 h2{
     margin-top: 0px;
@@ -39,6 +30,7 @@ h3{
     justify-content: center;
     align-items: center;
     gap: 25px;
+    padding: 10px;
 }
 button{
     background-color: rgb(162, 184, 234);
@@ -55,7 +47,10 @@ button img{
 }
 .scoreboardArea{
     display: flex;
+    justify-content: center;
+    padding: 30px;
     gap: 5px;
+    flex-wrap: wrap;
 }
 .scoreboardArea h2{
     font-weight: bolder;
@@ -102,6 +97,15 @@ button img{
     font-weight: bolder;
     margin: auto auto;
     padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+#gameResultsMessage img{
+    max-width: 40%;
+    max-height: 70%;
+    padding: 10px;
 }
 #scoreCounterContainer{
     width: 350px;
@@ -150,12 +154,12 @@ button img{
 .winnerIsGreen{
     background-color: green;
     color: white;
-    border: 5px solid black;
+    border: 4px solid black;
 }
 .loserIsRed{
     background-color: red;
     color: white;
-    border: 5px solid black;
+    border: 4px solid black;
 }
 .tieIsGray{
     background-color: gray;
