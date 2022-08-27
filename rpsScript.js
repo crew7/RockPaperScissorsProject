@@ -99,12 +99,8 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function scoreConverter(roundData) {
-    touchWinAudio.pause();
-    touchLoseAudio.pause();
-    touchTieAudio.pause();
-    touchWinAudio.currentTime = 0;
-    touchLoseAudio.currentTime = 0;
-    touchTieAudio.currentTime = 0;
+    
+    resetAudio();
 
     if (winCounter === 6 || loseCounter === 6) {
         winCounter = 0;
@@ -148,6 +144,8 @@ function scoreConverter(roundData) {
 
             touchGameResultsMessage.classList.add('winnerIsGreen')
 
+            touchFinalGameWinAudio.play();
+
 
         } else if (loseCounter > winCounter) {
             touchGameResultsMessage.textContent = 'YOU LOST!'
@@ -157,10 +155,25 @@ function scoreConverter(roundData) {
             touchGameResultsMessage.appendChild(sadFaceImg);
 
             touchGameResultsMessage.classList.add('loserIsRed')
+
+            touchFinalGameLoseAudio.play();
         }
         ++loseCounter
         ++winCounter /* The point of this is to loop back to a new game */
     }
+}
+function resetAudio() {
+    touchWinAudio.pause();
+    touchLoseAudio.pause();
+    touchTieAudio.pause();
+    touchFinalGameWinAudio.pause();
+    touchFinalGameLoseAudio.pause();
+
+    touchWinAudio.currentTime = 0;
+    touchLoseAudio.currentTime = 0;
+    touchTieAudio.currentTime = 0;
+    touchFinalGameWinAudio.currentTime = 0;
+    touchFinalGameLoseAudio.currentTime = 0;
 }
 
 
@@ -186,6 +199,9 @@ const arrayOfButtons = document.querySelectorAll('button');
 const touchWinAudio = document.querySelector('audio[data-result="win"]');
 const touchLoseAudio = document.querySelector('audio[data-result="lose"]');
 const touchTieAudio = document.querySelector('audio[data-result="tie"]');
+
+const touchFinalGameWinAudio = document.querySelector('audio[data-final="win"]');
+const touchFinalGameLoseAudio = document.querySelector('audio[data-final="lose"]');
 
 arrayOfButtons.forEach( (gameButton) => {
     gameButton.addEventListener('click', (buttonClick) => {
