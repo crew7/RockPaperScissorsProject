@@ -29,6 +29,7 @@ h3{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 25px;
     padding: 10px;
 }
@@ -165,4 +166,8 @@ button img{
     background-color: gray;
     color: white;
     border: 5px solid black;
+}
+#prependingBorder{
+    border: 5px solid white;
+    
 }

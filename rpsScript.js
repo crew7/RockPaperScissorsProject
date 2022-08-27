@@ -99,6 +99,13 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function scoreConverter(roundData) {
+    touchWinAudio.pause();
+    touchLoseAudio.pause();
+    touchTieAudio.pause();
+    touchWinAudio.currentTime = 0;
+    touchLoseAudio.currentTime = 0;
+    touchTieAudio.currentTime = 0;
+
     if (winCounter === 6 || loseCounter === 6) {
         winCounter = 0;
         loseCounter = 0;
@@ -117,12 +124,18 @@ function scoreConverter(roundData) {
     if (roundData === 'win') {
         ++winCounter;
         touchPlayerWins.textContent = winCounter;
+
+        touchWinAudio.play();
     } else if (roundData === 'lose') {
         ++loseCounter;
         touchComputerWins.textContent = loseCounter;
+
+        touchLoseAudio.play();
     } else if (roundData === 'tie') {
         ++tieCounter;
         touchGameTies.textContent = tieCounter;
+        
+        touchTieAudio.play();
     }
 
     if (winCounter === 5 || loseCounter === 5) {
@@ -149,6 +162,8 @@ function scoreConverter(roundData) {
         ++winCounter /* The point of this is to loop back to a new game */
     }
 }
+
+
 let winCounter = 0;
 let loseCounter = 0;
 let tieCounter = 0;
@@ -168,6 +183,9 @@ const touchGameTies = document.querySelector('#gameTies');
 
 const arrayOfButtons = document.querySelectorAll('button');
 
+const touchWinAudio = document.querySelector('audio[data-result="win"]');
+const touchLoseAudio = document.querySelector('audio[data-result="lose"]');
+const touchTieAudio = document.querySelector('audio[data-result="tie"]');
 
 arrayOfButtons.forEach( (gameButton) => {
     gameButton.addEventListener('click', (buttonClick) => {
