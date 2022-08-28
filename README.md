@@ -1,6 +1,6 @@
 # RockPaperScissorsProject
 
-Github live page of final product can be found here: https://crew7.github.io/rockPaperScissorsProject/
+Github live page of final product can be found here: https://crew7.github.io/rockPaperScissorsProject.....2/
 
 Rock paper scissors game, best of 5.
 
